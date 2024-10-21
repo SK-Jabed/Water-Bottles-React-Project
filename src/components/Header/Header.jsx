@@ -1,6 +1,8 @@
+import "./Header.css"
+
 const Header = () => {
     return (
-        <div>
+        <div className="header">
             <h2>Water Bottle React Project</h2>
         </div>
     );

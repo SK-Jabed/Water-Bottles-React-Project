@@ -6,7 +6,7 @@ const getStoreCart = () => {
     return [];
 }
 
-const saveCartTools = cart => {
+const saveCartToLocalStorage = cart => {
     const cartStringified = JSON.stringify(cart);
     localStorage.setItem("cart", cartStringified);
 }
@@ -15,7 +15,14 @@ const addToLocalStorage = id => {
     const cart = getStoreCart();
     cart.push(id);
     // Save to Local Storage
-    saveCartTools(cart)
+    saveCartToLocalStorage(cart)
 }
 
-export {addToLocalStorage}
+const removeFromLocalStorage = id => {
+    const cart = getStoreCart();
+    // Removing Every Id
+    const remaining = cart.filter(idx => idx !== id);
+    saveCartToLocalStorage(remaining);
+}
+
+export {addToLocalStorage, getStoreCart, removeFromLocalStorage}
